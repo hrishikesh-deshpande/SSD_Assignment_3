@@ -10,7 +10,7 @@
   font-size: 30px;
   /* font-family: Georgia, serif; */
   /* font-family: "Brush Script MT", cursive; */
-  font-family: Copperplate, Papyrus, fantasy;
+  font-family: Copperplate, Papyrus, serif;
 }
 
 #news {
@@ -66,7 +66,7 @@ h5 {
   box-sizing: border-box;
 }
 
-a {
+#news > div > h5 > a {
   padding-left: 2%;
   padding-right: 2%;
   padding-bottom: 5px;
@@ -121,7 +121,8 @@ a {
   width: 100%;
 }
 
-#news > div > div > h6 {
+#news > div > div > h6,
+#news > div > div > h6 > a {
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
   box-sizing: border-box;
@@ -136,27 +137,8 @@ a {
   margin-right: 8px;
   color: rgb(153, 153, 153);
   font-size: 14px;
-  text-decoration: none;
+  /* text-decoration: none; */
   padding: 6px 0px;
-}
-
-circle {
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-size-adjust: 100%;
-  line-height: 19px;
-  letter-spacing: 0.1px;
-  font-weight: 500;
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
-  color: rgb(153, 153, 153);
-  user-select: none;
-  fill: currentColor;
-  font-size: 4px;
-  cx: 12;
-  cy: 12;
-  r: 8;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
 }
 
 .ad {

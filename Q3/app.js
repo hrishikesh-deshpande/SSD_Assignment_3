@@ -1,6 +1,8 @@
 var newsDiv = document.getElementById("news");
 
-fetch("./futurism.json")
+var myPromise = fetch("./futurism.json");
+
+myPromise
   .then((response) => response.json())
   .then((response) => response.rss.channel.item)
   .then((items) => {
@@ -23,7 +25,15 @@ fetch("./futurism.json")
       h6.innerHTML =
         item.creator.__cdata +
         "&ensp; &#x2022; &ensp;" +
-        moment(date).fromNow();
+        moment(date).fromNow() +
+        "&ensp; &#x2022; &ensp;";
+
+      var rm = document.createElement("a");
+      rm.href = item.link[0];
+      rm.innerHTML = "Read more...";
+      rm.setAttribute("target", "_blank");
+
+      h6.appendChild(rm);
 
       div.appendChild(h6);
 
@@ -31,8 +41,11 @@ fetch("./futurism.json")
       // newsCard.setAttribute("onclick", "location.href='" + item.link[0] + "';");
 
       newsDiv.appendChild(newsCard);
-      console.log(item.title.__cdata);
+      // console.log(item.title.__cdata);
     });
+  })
+  .catch(function () {
+    console.log("loading json file failed");
   });
 
 // items.forEach((item) => console.log(item));
