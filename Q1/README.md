@@ -1,2 +1,2 @@
-# SSD_Assignment_3
-IIITH CSE Semester 1 SSD Assignment 3
+3D Library used :- babylon.js
+The folder structure should be intact for the code to work.
