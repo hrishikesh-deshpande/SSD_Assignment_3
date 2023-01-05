@@ -14,14 +14,28 @@ body {
   color: #ffff00;
   vertical-align: middle;
   /* padding: 30px; */
-  pointer-events: none;
 }
 #turnImage {
+  pointer-events: none;
   margin: auto;
   display: block;
   height: 100%;
   -webkit-filter: drop-shadow(0 0 5px rgba(255, 255, 0, 1));
   filter: drop-shadow(0 0 5px rgba(255, 255, 0, 1));
+}
+#downloadButton {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+}
+
+canvas {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 5;
+  height: 40%;
+  outline: none;
 }
 
 #board {
@@ -59,7 +73,7 @@ body {
   /* display: flex; */
   align-items: center;
   margin: auto;
-  top: 100px;
+  top: 60px;
   right: 50px;
   height: 90%;
   width: 100px;

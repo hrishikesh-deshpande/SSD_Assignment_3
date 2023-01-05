@@ -2,12 +2,43 @@ var GAME_OVER = false;
 var KILLS = 0;
 var VULTURE = -1;
 var TURN = "crow";
+var LOG =
+  "__START OF THE LOG FILE__\n__READ BROWSER CONSOLE FOR MORE DETAILS__\n";
 
-// const fs = require("fs");
-// fs.writeFile("Output.txt", "fnkskfdbk", (err) => {
-//   // In case of a error throw err.
-//   if (err) throw err;
-// });
+let downloadButton = document.createElement("a");
+downloadButton.id = "downloadButton";
+downloadButton.innerHTML = "<button>Get Logs</button>";
+downloadButton.href =
+  "data:application/octet-stream," + encodeURIComponent(LOG);
+downloadButton.download = "mouseEvents.log";
+document.getElementById("turnDiv").appendChild(downloadButton);
+// downloadButton.click();
+
+function logStartDrag(event) {
+  LOG +=
+    "Mouse dragging started at (" +
+    event.clientX +
+    ", " +
+    event.clientY +
+    ")\n";
+
+  downloadButton.href =
+    "data:application/octet-stream," + encodeURIComponent(LOG);
+}
+document.addEventListener("mousedown", logStartDrag);
+
+function logStopDrag(event) {
+  LOG +=
+    "Mouse dragging stopped at (" +
+    event.clientX +
+    ", " +
+    event.clientY +
+    ")\n";
+
+  downloadButton.href =
+    "data:application/octet-stream," + encodeURIComponent(LOG);
+}
+document.addEventListener("mouseup", logStopDrag);
 
 function updateTurn() {
   document.getElementById("turnImage").src = TURN + ".png";
@@ -306,6 +337,7 @@ function drop(ev) {
     }
     console.log(pieceName + " was dropped to " + ev.target.id);
     if (TURN == "vulture" && KILLS == 4) {
+      downloadButton.click();
       console.log("VULTURE WINS");
       // window.alert("VULTURE WINS");
       if (window.confirm("VULTURE WINS!!... Click OK to Play Again...")) {
@@ -371,6 +403,7 @@ function drop(ev) {
         }
       }
       GAME_OVER = true;
+      downloadButton.click();
       console.log("CROWS WIN");
       // window.alert("CROWS WIN");
       if (window.confirm("CROWS WIN!!... Click OK to Play Again...")) {
